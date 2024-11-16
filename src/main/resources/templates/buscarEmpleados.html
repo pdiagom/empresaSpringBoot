@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buscar Empleados</title>
+    <link rel="stylesheet" type="text/css" href="../static/CSS/styles.css">
+    <script>
+        // Función que cambia el input según la opción seleccionada
+        function actualizarCampo() {
+            const criterio = document.getElementById('criterio').value;
+            const entrada = document.getElementById('entrada');
+
+
+            entrada.innerHTML = '';
+
+            if (criterio === 'sexo') {
+
+                const selectSexo = document.createElement('select');
+                selectSexo.name = 'valor';
+                selectSexo.id = 'valor';
+
+                const optionM = document.createElement('option');
+                optionM.value = 'M';
+                optionM.textContent = 'Masculino';
+
+                const optionF = document.createElement('option');
+                optionF.value = 'F';
+                optionF.textContent = 'Femenino';
+
+                selectSexo.appendChild(optionM);
+                selectSexo.appendChild(optionF);
+
+                entrada.appendChild(selectSexo);
+            } else {
+
+                const inputText = document.createElement('input');
+                inputText.type = 'text';
+                inputText.name = 'valor';
+                inputText.id = 'valor';
+                inputText.required = true;
+
+                entrada.appendChild(inputText);
+            }
+        }
+
+
+        window.onload = actualizarCampo;
+    </script>
+</head>
+<body>
+<h2>Buscar Empleados</h2>
+<form th:action="@{/empresa/empleados/empleadosFiltrados}" method="POST">
+    <input type="hidden" name="modulo" value="empleados">
+    <input type="hidden" name="opcion" value="listarFiltro">
+    <label for="criterio">Buscar por:</label>
+    <select name="criterio" id="criterio"  onchange="actualizarCampo()">
+        <option value="dni">DNI</option>
+        <option value="nombre">Nombre</option>
+        <option value="categoria">Categoría</option>
+        <option value="sexo">Sexo</option>
+        <option value="anyos_trabajados">Años Trabajados</option>
+    </select><br><br>
+
+    <label for="valor">Valor de búsqueda:</label>
+    <div id="entrada">
+
+        <input type="text" id="valor" name="valor" required>
+    </div><br><br>
+
+    <input type="submit" value="Buscar">
+    <a class="volver" th:href="@{/}">Volver al Menú</a>
+</form>
+</body>
+</html>

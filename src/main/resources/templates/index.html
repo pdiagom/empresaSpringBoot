@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu de opciones</title>
+    <link rel="stylesheet" href="../static/CSS/styles.css">
+</head>
+<body>
+<h1>Menú de Opciones</h1>
+<table border="1">
+    <tr>
+        <td><a th:ref="@{/empresa/empleados/crear}">Crear empleado</a> </td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/empresa/empleados/listar}">Lista de Empleados</a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/empresa/empleados/filtrar}">Buscar Empleados</a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/empresa/nominas/buscar}">Obtener Salario de
+            Empleado</a></td>
+    </tr>
+</table>
+</body>
+</html>
