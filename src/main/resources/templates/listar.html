@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Listar Productos</title>
+    <link rel="stylesheet" type="text/css" href="../empresa/CSS/styles.css">
+</head>
+<body>
+<div th:if="${#lists.isEmpty(empleados)}">
+    <p class="error vacio">No se encontraron empleados durante la busqueda</p>
+</div>
+
+ <h1>Listar Empleados</h1>
+ <table border="1">
+  <tr>
+   <td>DNI</td>
+   <td>Nombre</td>
+   <td>Sexo</td>
+   <td>Categoria</td>
+   <td>Años Trabajados</td>
+   <td>Accion</td>
+  </tr>
+
+  <tr th:each="empleado: ${empleados}">
+    <td>
+
+        <div class="tooltip">
+            <a th:href="@{/empresa/empleado/editar/{dni}(dni=${empleado.dni})}" th:value="${empleado.dni}"></a>
+            <span class="tooltiptext">Pincha para editar</span>
+        </div>
+    </td>
+    <td th:text="${empleado.nombre}"></td>
+      <td th:text="${empleado.sexo}"></td>
+      <td th:text="${empleado.categoria}"></td>
+      <td th:text="${empleado.antiguedad}"></td>
+    <td>
+        <a th:href="@{/empresa/empleados/eliminar/{dni}(dni=${empleado.dni})}">Eliminar</a>
+    </td>
+  </tr>
+ </table>
+ <a class="volver" th:href="@{/}">Volver al Menú</a>
+</body>
+</html>

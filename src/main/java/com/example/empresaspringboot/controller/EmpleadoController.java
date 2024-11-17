@@ -60,4 +60,11 @@ public class EmpleadoController {
         model.addAttribute("exito", true);
     return listarEmpleados(model);
     }
+
+    @DeleteMapping("/eliminar/{dni}")
+    public String eliminarEmpleado(@PathVariable String dni, Model model){
+        empleadoService.eliminar(dni);
+        model.addAttribute("exito", true);
+        return listarEmpleados(model);
+    }
 }

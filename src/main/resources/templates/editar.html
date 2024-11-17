@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Editar Empleado</title>
+ <link rel="stylesheet" type="text/css" href="../empresa/CSS/styles.css">
+</head>
+<body>
+ <h1>Editar Empleado</h1>
+ <form th:action="@{/empresa/empleados/empleadoEditado}" method="post">
+
+  <table border="1">
+   <tr>
+    <td>DNI</td>
+    <td><input name="dni" id="dni" th:value="${empleado.dni}" readonly></td>
+   </tr>
+   <tr>
+    <td>Nombre:</td>
+    <td><input type="text"
+               name="nombre" id="nombre" th:value="${empleado.nombre}" required></td>
+   </tr>
+   <tr>
+    <td>Sexo:</td>
+    <td>
+     <select name="sexo"
+             id="sexo">
+      <option value="M" th:selected="${empleado.sexo == 'M'}">Masculino</option>
+      <option value="F" th:selected="${empleado.sexo == 'F'}">Femenino</option>
+     </select><br><br>
+   </tr>
+   <tr>
+    <td>Categoria:</td>
+    <td><input type="text" name="categoria" size="50" th:value="${empleado.categoria}"></td>
+   </tr>
+   <tr>
+    <td>Años trabajados:</td>
+    <td><input type="text" name="anyos" size="50" th:value="${empleado.anyos}"></td>
+   </tr>
+  </table>
+  <input type="submit" value="Guardar">
+  <a class="volver" th:href="@{/}">Volver al Menú</a>
+ </form>
+
+</body>
+</html>
