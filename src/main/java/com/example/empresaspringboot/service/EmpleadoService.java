@@ -58,13 +58,12 @@ public class EmpleadoService {
             return false;
         }
     }
-    public boolean eliminar(String dni){
-        Optional<Empleado> empleado=empleadoRepository.findById(dni);
-        if(empleado.isPresent()) {
-            empleadoRepository.delete(empleado);
-            return true;
-        }else{
-            return false;
+    public void eliminar(String dni){
+        Optional<Empleado> empleado = empleadoRepository.findById(dni);
+        if (empleado.isPresent()) {
+            empleadoRepository.delete(empleado.get());
+        } else {
+            throw new RuntimeException("Empleado no encontrado");
         }
     }
 }

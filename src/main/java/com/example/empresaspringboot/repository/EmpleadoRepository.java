@@ -24,5 +24,4 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, String> {
 
     List<Empleado> findByNombreContainingIgnoreCase(String nombre);
 
-    void delete(Optional<Empleado> empleado);
 }
