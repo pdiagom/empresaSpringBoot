@@ -18,9 +18,11 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, String> {
 
     List<Empleado> findByCategoria(Integer categoria);
 
-    List<Empleado> findByAnyos_trabajados(int anyos);
+    List<Empleado> findByAnyos(int anyos);
 
     List<Empleado> findByDniContainingIgnoreCase(String dni);
+
+    void deleteByDni(String dni);
 
     List<Empleado> findByNombreContainingIgnoreCase(String nombre);
 

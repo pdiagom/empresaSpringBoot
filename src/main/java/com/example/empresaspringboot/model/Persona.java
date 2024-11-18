@@ -1,5 +1,7 @@
 package com.example.empresaspringboot.model;
+import jakarta.persistence.Column;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,6 +31,7 @@ public abstract class Persona {
     /**
      * El género de la persona ('M' para masculino, 'F' para femenino).
      */
+    @Column(name = "genero")
     private String sexo;
 
     /**

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Buscar Sueldo</title>
-    <link rel="stylesheet" type="text/css" href="../static/CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
 </head>
 <body>
 <h1>Obtener Sueldo de Empleado</h1>
@@ -12,7 +12,8 @@
     <input type="text" name="dni" required>
     <input type="hidden" name="opcion" value="mostrarSueldo">
     <input type="submit" value="Buscar">
+    <a class="volver" th:href="@{/}">Volver al Inicio</a>
 </form>
-<a th:href="@{/}">Volver al Inicio</a>
+
 </body>
 </html>

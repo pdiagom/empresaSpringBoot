@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Error</title>
-    <link rel="stylesheet" type="text/css" href="../static/CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
 </head>
 <body>
     <h1>Error</h1>
@@ -11,6 +11,6 @@
         Causa: <strong th:text="${mensaje != null ? mensaje : 'Error desconocido'}"></strong>
     </p>
 
-    <a th:href="@{/}">Volver al Inicio</a>
+    <a class="volver" th:href="@{/}">Volver al Inicio</a>
 </body>
 </html>

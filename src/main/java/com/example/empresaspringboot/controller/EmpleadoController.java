@@ -28,9 +28,14 @@ public class EmpleadoController {
     }
 
     @PostMapping("/registrado")
-    public String registrarEmpleado(@RequestBody Empleado empleado, Model model){
-        empleadoService.crear(empleado);
-        model.addAttribute("empleado", empleado);
+    public String registrarEmpleado(@RequestParam("dni") String dni,
+                                    @RequestParam("nombre") String nombre,
+                                    @RequestParam("sexo") String sexo,
+                                    @RequestParam("categoria") String categoria,
+                                    @RequestParam("anyos") String anyos, Model model){
+
+        empleadoService.crear(dni, nombre, sexo,Integer.parseInt(categoria), Integer.parseInt(anyos));
+
         return listarEmpleados(model);
     }
 
@@ -48,23 +53,22 @@ public class EmpleadoController {
     }
 
     @GetMapping("/editar/{dni}")
-    public String editarEmpleado(@PathVariable String dni, Model model){
+    public String editarEmpleado(@PathVariable("dni") String dni, Model model){
         Empleado empleado=empleadoService.obtenerEmpleado(dni);
         model.addAttribute("empleado", empleado);
         return "editar";
     }
 
     @PostMapping("/empleadoEditado")
-    public String guardarCambios(@RequestBody Empleado empleado, Model model){
+    public String guardarCambios(@ModelAttribute Empleado empleado, Model model){
         empleadoService.editar(empleado);
         model.addAttribute("exito", true);
     return listarEmpleados(model);
     }
 
-    @DeleteMapping("/eliminar/{dni}")
-    public String eliminarEmpleado(@PathVariable String dni, Model model){
+    @GetMapping("/eliminar/{dni}")
+    public String eliminarEmpleado(@PathVariable("dni") String dni, Model model){
         empleadoService.eliminar(dni);
-        model.addAttribute("exito", true);
         return listarEmpleados(model);
     }
 }

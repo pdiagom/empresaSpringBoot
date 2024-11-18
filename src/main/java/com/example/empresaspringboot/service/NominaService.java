@@ -14,6 +14,6 @@ public class NominaService {
 
     public double obtenerSueldo(String dni){
         Optional<Nomina> nomina= Optional.ofNullable(nominaRepository.findByDni(dni));
-        return nomina.map(Nomina::getSueldo).orElse(null);
+        return nomina.map(Nomina::getSueldo).orElse(0);
     }
 }

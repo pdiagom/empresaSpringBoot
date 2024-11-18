@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8"></meta>
     <title>Buscar Empleados</title>
-    <link rel="stylesheet" type="text/css" href="../static/CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
     <script>
         // Función que cambia el input según la opción seleccionada
         function actualizarCampo() {
@@ -19,11 +20,11 @@
                 selectSexo.id = 'valor';
 
                 const optionM = document.createElement('option');
-                optionM.value = 'M';
+                optionM.value = "M";
                 optionM.textContent = 'Masculino';
 
                 const optionF = document.createElement('option');
-                optionF.value = 'F';
+                optionF.value = "F";
                 optionF.textContent = 'Femenino';
 
                 selectSexo.appendChild(optionM);
@@ -67,7 +68,7 @@
     </div><br><br>
 
     <input type="submit" value="Buscar">
-    <a class="volver" th:href="@{/}">Volver al Menú</a>
+    <a class="volver" th:href="@{/}">Volver al inicio</a>
 </form>
 </body>
 </html>

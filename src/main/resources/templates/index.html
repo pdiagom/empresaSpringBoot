@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Menu de opciones</title>
-    <link rel="stylesheet" href="../static/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/styles.css">
 </head>
 <body>
 <h1>Menú de Opciones</h1>
 <table border="1">
     <tr>
-        <td><a th:ref="@{/empresa/empleados/crear}">Crear empleado</a> </td>
+        <td><a th:href="@{/empresa/empleados/crear}">Crear empleado</a> </td>
     </tr>
     <tr>
         <td><a th:href="@{/empresa/empleados/listar}">Lista de Empleados</a></td>
@@ -18,7 +18,7 @@
         <td><a th:href="@{/empresa/empleados/filtrar}">Buscar Empleados</a></td>
     </tr>
     <tr>
-        <td><a th:href="@{/empresa/nominas/buscar}">Obtener Salario de
+        <td><a th:href="@{/empresa/nominas/buscarSueldo}">Obtener Sueldo de
             Empleado</a></td>
     </tr>
 </table>

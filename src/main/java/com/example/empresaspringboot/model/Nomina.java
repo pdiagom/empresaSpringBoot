@@ -31,17 +31,13 @@ public class Nomina implements Serializable {
     @JoinColumn(name = "dni", referencedColumnName = "dni", nullable = false)
     private Empleado empleado;
 
+    @Column(name="dni", insertable = false, updatable = false)
+    private String dni;
     /**
      * Sueldo total del empleado.
      */
     @Column(name = "sueldo", nullable = false)
     private int sueldo;
-
-    /**
-     * Fecha de la nómina, generada automáticamente al insertarla.
-     */
-    @Column(name = "fecha_nomina", nullable = false, updatable = false)
-    private LocalDate fechaNomina;
 
     /**
      * Constructor que crea una nueva nómina asociada a un empleado.
@@ -51,7 +47,7 @@ public class Nomina implements Serializable {
      */
     public Nomina(Empleado empleado, int sueldo) {
         this.empleado = empleado;
+        this.dni=empleado.getDni();
         this.sueldo = sueldo;
-        this.fechaNomina = LocalDate.now(); // Asignar la fecha actual.
     }
 }

@@ -4,6 +4,7 @@ import com.example.empresaspringboot.model.Empleado;
 import com.example.empresaspringboot.repository.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +18,13 @@ public class EmpleadoService {
     public List<Empleado> obtenerEmpleados(){
         return empleadoRepository.findAll();
     }
-    public boolean crear(Empleado empleado){
-            Empleado empleadoAct = new Empleado(empleado.getDni(),empleado.getNombre(),empleado.getSexo(),empleado.getCategoria(), empleado.getAnyos());
-            empleadoRepository.save(empleadoAct);
+
+    public boolean crear(String dni,
+                         String nombre, String sexo,
+                         int categoria,
+                         int anyos){
+            Empleado empleado = new Empleado(dni,nombre,sexo,categoria,anyos);
+            empleadoRepository.save(empleado);
             return true;
     }
 
@@ -39,7 +44,7 @@ public class EmpleadoService {
         } else if (criterio.equals("categoria")) {
           listaEmpleados=empleadoRepository.findByCategoria(Integer.valueOf(valor));
         } else if (criterio.equals("anyos_trabajados")) {
-            listaEmpleados=empleadoRepository.findByAnyos_trabajados(Integer.valueOf(valor));
+            listaEmpleados=empleadoRepository.findByAnyos(Integer.valueOf(valor));
         }
         return listaEmpleados;
     }
@@ -53,17 +58,14 @@ public class EmpleadoService {
             empleadoAct.setCategoria(empleado.getCategoria());
             empleadoAct.setAnyos(empleado.getAnyos());
             empleadoRepository.save(empleadoAct);
-            return true;
+            return true;  // Devuelve true si se editó con éxito
         } else {
-            return false;
+            return false;  // Devuelve false si no se encontró el empleado
         }
     }
-    public void eliminar(String dni){
-        Optional<Empleado> empleado = empleadoRepository.findById(dni);
-        if (empleado.isPresent()) {
-            empleadoRepository.delete(empleado.get());
-        } else {
-            throw new RuntimeException("Empleado no encontrado");
-        }
+
+    @Transactional
+    public void eliminar(String dni) {
+    empleadoRepository.deleteByDni(dni);
     }
 }

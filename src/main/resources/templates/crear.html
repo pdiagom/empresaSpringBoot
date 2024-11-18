@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+ <meta charset="UTF-8"></meta>
 <title>Crear Empleado</title>
- <link rel="stylesheet" type="text/css" href="../static/CSS/styles.css">
+ <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
 </head>
 <body>
  <h1>Crear Empleado</h1>
@@ -32,12 +32,12 @@
     <td><input type="text" name="categoria" size="50" ></td>
    </tr>
    <tr>
-    <td>Años trabajados:</td>
+    <td>AÃ±os trabajados:</td>
     <td><input type="text" name="anyos" size="50"></td>
    </tr>
   </table>
   <input type="submit" value="Guardar">
-  <a class="volver" th:href="@{/}">Volver al Menú</a>
+  <a class="volver" th:href="@{/}">Volver al inicio</a>
  </form>
 </body>
 </html>

@@ -1,12 +1,14 @@
 package com.example.empresaspringboot.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+
+
+
+import java.util.List;
 
 /**
  * Clase que representa a un empleado, extendiendo la clase base {@code Persona}.
@@ -32,6 +34,8 @@ public class Empleado extends Persona {
     @Column(name = "anyos_trabajados", nullable = false)
     private int anyos = 0;
 
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Nomina> nominas;
     /**
      * Constructor que crea un nuevo empleado con un DNI, nombre y género,
      * asignando una categoría predeterminada de 1 y años de servicio en 0.
