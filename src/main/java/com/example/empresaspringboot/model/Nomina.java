@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
-import java.time.LocalDate;
+
 
 /**
  * La clase {@code Nomina} representa los datos de una nómina

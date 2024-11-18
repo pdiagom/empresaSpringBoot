@@ -33,9 +33,15 @@ public class EmpleadoController {
                                     @RequestParam("sexo") String sexo,
                                     @RequestParam("categoria") String categoria,
                                     @RequestParam("anyos") String anyos, Model model){
-
-        empleadoService.crear(dni, nombre, sexo,Integer.parseInt(categoria), Integer.parseInt(anyos));
-
+        if(categoria=="" && anyos==""){
+            empleadoService.crear(dni, nombre, sexo,1, 0);
+        }else if(anyos==""){
+            empleadoService.crear(dni, nombre, sexo,Integer.parseInt(categoria), 0);
+        }else if(categoria==""){
+            empleadoService.crear(dni, nombre, sexo,1, Integer.parseInt(anyos));
+        }else {
+            empleadoService.crear(dni, nombre, sexo, Integer.parseInt(categoria), Integer.parseInt(anyos));
+        }
         return listarEmpleados(model);
     }
 
