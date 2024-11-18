@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public String handleGenericException(Exception ex, Model model) {
     	System.out.println(ex);
-        model.addAttribute("mensaje", "Error inesperado, consulte con el soporte técnico");
+        model.addAttribute("mensaje", "Error inesperado, pulse volver al inicio");
         return "error";
     }
     

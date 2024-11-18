@@ -2,6 +2,7 @@ package com.example.empresaspringboot.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -32,6 +33,8 @@ public class Empleado extends Persona {
     @Column(name = "anyos_trabajados", nullable = false)
     private int anyos = 0;
 
+//    @OneToMany(mappedBy = "empleado")
+//    private Nomina nomina;
     /**
      * Constructor que crea un nuevo empleado con un DNI, nombre y género,
      * asignando una categoría predeterminada de 1 y años de servicio en 0.

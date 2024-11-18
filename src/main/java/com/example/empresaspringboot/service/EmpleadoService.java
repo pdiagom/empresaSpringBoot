@@ -39,7 +39,7 @@ public class EmpleadoService {
         } else if (criterio.equals("categoria")) {
           listaEmpleados=empleadoRepository.findByCategoria(Integer.valueOf(valor));
         } else if (criterio.equals("anyos_trabajados")) {
-            listaEmpleados=empleadoRepository.findByAnyos_trabajados(Integer.valueOf(valor));
+            listaEmpleados=empleadoRepository.findByAnyos(Integer.valueOf(valor));
         }
         return listaEmpleados;
     }

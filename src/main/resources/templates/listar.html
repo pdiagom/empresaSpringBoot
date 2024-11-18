@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="UTF-8"></meta>
     <title>Listar Productos</title>
-    <link rel="stylesheet" type="text/css" href="../empresa/CSS/styles.css">
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
 </head>
 <body>
 <div th:if="${#lists.isEmpty(empleados)}">
@@ -17,7 +17,7 @@
    <td>Nombre</td>
    <td>Sexo</td>
    <td>Categoria</td>
-   <td>Años Trabajados</td>
+   <td>AÃ±os Trabajados</td>
    <td>Accion</td>
   </tr>
 
@@ -25,19 +25,19 @@
     <td>
 
         <div class="tooltip">
-            <a th:href="@{/empresa/empleado/editar/{dni}(dni=${empleado.dni})}" th:value="${empleado.dni}"></a>
+            <a th:href="@{/empresa/empleado/editar/{dni}(dni=${empleado.dni})}" th:text="${empleado.dni}"></a>
             <span class="tooltiptext">Pincha para editar</span>
         </div>
     </td>
     <td th:text="${empleado.nombre}"></td>
       <td th:text="${empleado.sexo}"></td>
       <td th:text="${empleado.categoria}"></td>
-      <td th:text="${empleado.antiguedad}"></td>
+      <td th:text="${empleado.anyos}"></td>
     <td>
         <a th:href="@{/empresa/empleados/eliminar/{dni}(dni=${empleado.dni})}">Eliminar</a>
     </td>
   </tr>
  </table>
- <a class="volver" th:href="@{/}">Volver al Menú</a>
+ <a class="volver" th:href="@{/}">Volver al inicio</a>
 </body>
 </html>

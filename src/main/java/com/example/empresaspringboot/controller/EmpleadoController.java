@@ -48,7 +48,7 @@ public class EmpleadoController {
     }
 
     @GetMapping("/editar/{dni}")
-    public String editarEmpleado(@PathVariable String dni, Model model){
+    public String editarEmpleado(@PathVariable("dni") String dni, Model model){
         Empleado empleado=empleadoService.obtenerEmpleado(dni);
         model.addAttribute("empleado", empleado);
         return "editar";
