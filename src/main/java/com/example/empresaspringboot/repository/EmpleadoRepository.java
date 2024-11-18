@@ -14,7 +14,7 @@ public interface EmpleadoRepository extends JpaRepository<Empleado, String> {
 
     List<Empleado> findByDniContaining(String dni);
 
-    List<Empleado> findBySexo(Character sexo);
+    List<Empleado> findBySexo(String sexo);
 
     List<Empleado> findByCategoria(Integer categoria);
 
